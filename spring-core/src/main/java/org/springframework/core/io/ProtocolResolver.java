@@ -19,6 +19,10 @@ package org.springframework.core.io;
 import org.springframework.lang.Nullable;
 
 /**
+ * 用户自定义协议资源解决策略
+ * 在Spring中该接口并没有实现类，它需要用户自定义，自定义的Resolver需要调用
+ * DefaultResourceLoader#addProtocolResolver(ProtocolResolver protocolResolver) 方法
+ *
  * A resolution strategy for protocol-specific resource handles.
  *
  * <p>Used as an SPI for {@link DefaultResourceLoader}, allowing for
@@ -33,6 +37,9 @@ import org.springframework.lang.Nullable;
 public interface ProtocolResolver {
 
 	/**
+	 * 使用指定的 ResourceLoader , 解析指定的 location。
+	 * 若成功，则返回对应的Resource
+	 *
 	 * Resolve the given location against the given resource loader
 	 * if this implementation's protocol matches.
 	 * @param location the user-specified resource location
